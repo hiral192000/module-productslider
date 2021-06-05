@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <promotion>
+            <promoslider>
+                <active>0</active>
+                <auto_slide>1</auto_slide>
+                <title>Promotion</title>
+                <slider_speed>1500</slider_speed>
+                <show_price>1</show_price>
+                <show_to_cart>1</show_to_cart>
+                <show_review_rating>1</show_review_rating>
+                <show_navigation_control>1</show_navigation_control>
+                <qty_product>9</qty_product>
+                <item_default>3</item_default>
+                <item_desktop>4</item_desktop>
+                <item_desktop_small>3</item_desktop_small>
+                <item_tablet>2</item_tablet>
+                <item_mobile>1</item_mobile>
+                <no_row_show>1</no_row_show>
+            </promoslider>
+        </promotion>
+    </default>
+</config>

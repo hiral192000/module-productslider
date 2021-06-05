@@ -1,0 +1,167 @@
+<?php
+$productCollection = $block->getProductCollection();
+$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+$imageType = 'category_page_grid';
+$imagehomeType = 'product_home_thumbnail_image';
+?>
+<?php
+if($block->getEnabledata() == 1)
+{
+?>
+<div class="rokan-promotionproduct">
+    <div class="rokan-product-heading rokan-promotionproduct-heading"><h2><?php echo $block->getTitle() ?></h2></div>
+    <ul class="owl">
+        <?php foreach ($productCollection as $product) { ?>
+            <li class="item featuredproductslider-item">
+                <div class="product-item">
+                    <div class="product-photo">
+                        <?php
+                        $image = $block->getImage($product, $imageType);
+                        ?>
+                        <a href="<?php /* @escapeNotVerified */ echo $product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                            <?php $productImageThumb = $block->getImage($product, 'category_page_grid-1'); ?>
+                            <span class="image0 image-switch">
+                                <?php echo $image->toHtml(); ?>
+                            </span>
+                            <span class="image1 image-switch">
+                                <?php echo $productImageThumb->toHtml(); ?>
+                            </span>
+                        </a>
+                        <div class="addto-links-icons visible-onhover">
+                            <div class="action-inner">	
+                                <ul class="add-to-links">
+                                    <li>
+                                        <div class="quickview-product">
+                                            <a href="javascript:void(0)" data-role="quickview-button" data-id="<?php echo $product->getId(); ?>" data-href="<?php echo $block->getUrl('quickview/product/quickview/id/' . $product->getId()) ?>" title="<?php echo $block->escapeHtml(__('Quick view')); ?>" class="ajax diamond tooltip-hover" data-placement="top" data-original-title="<?php echo ('Quick view') ?>"><i class="fa fa-compress"></i></a>
+                                        </div>
+                                    </li>
+                                    <?php
+                                    $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare');
+                                    ?>
+                                    <li><a href="#"
+                                           class="action button tocompare"
+                                           title="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+                                           aria-label="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+                                           data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($product); ?>'
+                                           role="button">
+                                            <i class="fa fa-sliders"></i>
+                                        </a>
+                                    </li>
+
+                                    <?php if ($this->getConfig('addtowishlist')): ?>
+                                        <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow()): ?>
+                                            <li>
+                                                <a href="#"
+                                                   class="action button towishlist"
+                                                   title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+                                                   aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+                                                   data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($product); ?>'
+                                                   data-action="add-to-wishlist"
+                                                   role="button">
+                                                    <i class="fa fa-heart-o"></i>
+                                                </a>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">
+                            <a href="<?= $product->getProductUrl(); ?>" title="<?php echo $product->getName(); ?>">
+                                <?= $product->getName(); ?>
+                            </a>
+                        </h3>
+                    <?php if($block->getDescription() !== ""){ ?>
+                    <div>
+                       <?php echo $block->getDescription();?>
+                    </div>
+                    <?php } ?>
+                        <div class="actions-primary">
+                            <?php if ($product->isSaleable()): ?>
+                                <?php $postParams = $block->getAddToCartPostParams($product); ?>
+                                <?php if($block->getShowAddToCart() == 1){?>
+                                <form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
+                                    <?php echo $this->getBlockHtml('formkey') ?>
+                                    <button type="submit"
+                                            title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
+                                            class="btn btn-add-to-cart">
+                                        <i class="icon icon_bag_alt"></i></span>
+                                    </button>
+                                </form>
+                            <?php } ?>
+                            <?php else: ?>
+                                <?php if ($product->getIsSalable()): ?>
+                                    <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
+                                <?php else: ?>
+                                    <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                        </div>
+                        <?php 
+                            if($block->getShowprice() == 1){
+                                echo $block->getProductPrice($product); 
+                              } 
+                        ?>
+                        <?php echo $block->getProductDetailsHtml($product); ?>
+
+                    </div>
+                </div>
+            </li>
+        <?php } ?>
+    </ul>
+</div>
+<?php } ?>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'mage/mage',
+        'rokanthemes/owl'
+    ], function ($) {
+        'use strict';
+        var desktop_item = parseInt("<?php echo $block->getDesktopval() ?>");
+        var itemdefault = parseInt("<?php echo $block->getItemDefault() ?>");
+        var desktop_small = parseInt("<?php echo $block->getDesktopsmall() ?>");
+        var tablet = parseInt("<?php echo $block->getTabletitem() ?>");
+        var mobile = parseInt("<?php echo $block->getMobileitem() ?>");
+        
+        var slider_speed = parseInt("<?php echo $block->getSliderSpeed() ?>");
+        var auto_slide = "<?php echo $block->getAutoSlideValue() ?>";
+        if(auto_slide == 1)
+        {
+            var autoslide = true;
+        }
+        else
+        {
+            var autoslide = false;
+        }
+        var nav_control = "<?php echo $block->getShowNavControl() ?>";
+        if(nav_control == 1)
+        {
+            var show_nav_control = true;
+        }
+        else
+        {
+            var show_nav_control = false;
+        }
+        //alert(show_nav_control);
+        jQuery(".rokan-promotionproduct .owl").owlCarousel({
+            lazyLoad: true,
+            autoPlay: autoslide,
+            items: itemdefault,
+            itemsDesktop: [1199, desktop_item],
+            itemsDesktopSmall: [980, desktop_small],
+            itemsTablet: [768, tablet],
+            itemsMobile: [479, mobile],
+            slideSpeed: slider_speed,
+            paginationSpeed: 500,
+            rewindSpeed: 500,
+            navigation: show_nav_control,
+            stopOnHover: true,
+            pagination: false,
+            scrollPerPage: true,
+        });
+    });
+</script>

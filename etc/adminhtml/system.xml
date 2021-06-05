@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+     <system>
+         <tab id="promotion_tab" translate="label" sortOrder="110">
+             <label>Promotion</label>
+         </tab>
+         <section id="promotion" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+             <class>separator-top</class>
+             <label>Promotion Slider</label>
+             <tab>promotion_tab</tab>
+             <resource>VendorName_ModuleName::acl_path</resource>
+             <group id="promoslider" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                 <label>Promotion Slider Config</label>
+                 <attribute type="expanded">1</attribute>
+                 <field id="active" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                 <field id="auto_slide" translate="label comment" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Auto slide</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                 </field>
+                 <field id="title" translate="label" type="textarea" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                    <comment>Block Title</comment>
+                </field>
+                <field id="description" translate="label" type="textarea" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Description</label>
+                    <comment>Description</comment>
+                </field>
+                <field id="slider_speed" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Slideshow Speed</label>
+                    <comment>Timer Title</comment>
+                    <validate>validate-number validate-digits required-entry</validate>
+                </field>
+                 <field id="show_price" translate="label comment" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Show Price</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                 </field>
+                 <field id="show_to_cart" translate="label comment" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Show Add to cart</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                 </field>
+                 <field id="show_to_wishlist" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Show Add to Wishlist</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                 </field>
+                 <field id="show_review_rating" translate="label comment" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Show Review Rating</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                 </field>
+                 <field id="show_navigation_control" translate="label comment" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Show navigation control</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                 </field>
+                 <field id="qty_product" translate="label" type="text" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Qty of Product</label>
+                    <validate>validate-number validate-digits required-entry</validate>
+                </field>
+                <field id="item_default" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Items Default</label>
+                    <validate>validate-number validate-digits required-entry</validate>
+                </field>
+                <field id="item_desktop" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Items On Desktop</label>
+                    <validate>validate-number validate-digits required-entry</validate>
+                </field>
+                 <field id="item_desktop_small" translate="label" type="text" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Items On Desktop Small</label>
+                    <validate>validate-number validate-digits required-entry</validate>
+                </field>
+                 <field id="item_tablet" translate="label" type="text" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Items On Tablet</label>
+                    <validate>validate-number validate-digits required-entry</validate>
+                </field>
+                 <field id="item_mobile" translate="label" type="text" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Items On Mobile</label>
+                    <validate>validate-number validate-digits required-entry</validate>
+                </field>
+                <field id="no_row_show" translate="label" type="text" sortOrder="19" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Number Rows Show</label>
+                    <validate>validate-number validate-digits required-entry</validate>
+                </field>
+                <field id="show_control" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Show Next/Back control</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                 </field>
+             </group>
+        </section>
+     </system>
+</config>
