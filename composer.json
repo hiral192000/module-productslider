@@ -2,7 +2,7 @@
   "name": "hiral192000/module-productslider",
   "description": "Magento 2 Product Slider",
   "require": {
-    "php": ">= 7.0.0"
+    "php": ">=7.0.0"
   },
   "type": "magento2-module",
   "version": "1.0.0",
