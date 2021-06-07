@@ -17,7 +17,5 @@
     "psr-4": {
       "Itabtech\\Productslider\\": ""
     }
-  },
-  "require": {},
-    "minimum-stability": "dev"
+  }
 }
